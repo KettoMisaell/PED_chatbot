@@ -1,0 +1,40 @@
+nohup: ignoring input
+Iniciando servidor con API key configurada...
+API Key: AIzaSyD3us...
+ * Serving Flask app 'src.main'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.10.53:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 994-917-666
+192.168.10.53 - - [01/Aug/2025 14:17:16] "GET / HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 14:17:16] "GET /assets/index-BqezGlFU.js HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 14:17:16] "GET /assets/index-D3kfoK_h.css HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 14:17:16] "GET /api/status HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 14:17:16] "GET /favicon.ico HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 14:17:17] "POST /api/initialize HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 14:17:17] "GET /api/status HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 14:17:52] "POST /api/chat HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 15:28:01] "GET / HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 16:30:45] "GET / HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 16:30:46] "GET /assets/index-D3kfoK_h.css HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 16:30:46] "GET /assets/index-BqezGlFU.js HTTP/1.1" 304 -
+192.168.10.53 - - [01/Aug/2025 16:30:46] "GET /api/status HTTP/1.1" 200 -
+192.168.10.53 - - [01/Aug/2025 16:30:46] "GET /favicon.ico HTTP/1.1" 304 -
+192.168.10.52 - - [01/Aug/2025 16:30:58] "GET / HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:30:58] "GET /assets/index-BqezGlFU.js HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:30:58] "GET /assets/index-D3kfoK_h.css HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:30:58] "GET /api/status HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:30:58] "GET /favicon.ico HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:31:01] "GET / HTTP/1.1" 304 -
+192.168.10.52 - - [01/Aug/2025 16:31:01] "GET /assets/index-BqezGlFU.js HTTP/1.1" 304 -
+192.168.10.52 - - [01/Aug/2025 16:31:01] "GET /assets/index-D3kfoK_h.css HTTP/1.1" 304 -
+192.168.10.52 - - [01/Aug/2025 16:31:01] "GET /api/status HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:31:01] "GET /favicon.ico HTTP/1.1" 304 -
+192.168.10.52 - - [01/Aug/2025 16:31:47] "POST /api/chat HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:33:08] "POST /api/chat HTTP/1.1" 200 -
+192.168.10.52 - - [01/Aug/2025 16:35:53] "POST /api/chat HTTP/1.1" 200 -
