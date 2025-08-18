@@ -4,8 +4,11 @@ import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { ScrollArea } from '@/components/ui/scroll-area.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { Loader2, Send, FileText, User, Bot, AlertCircle, Building2 } from 'lucide-react'
+import { Loader2, Send, FileText, User, Bot, AlertCircle } from 'lucide-react'
 import ReactMarkdown from 'react-markdown';
+import logo from '../dist/assets/footer.png'
+import MorelosLogo from '../dist/assets/Morelos.svg'
+import ATDLogo from '../dist/assets/ATD-removebg-preview.png'
 import './App.css'
 
 function App() {
@@ -123,29 +126,35 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 font-sans text-slate-800">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <header className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-600 p-3 rounded-full">
-              <Building2 className="h-8 w-8 text-white" />
+    <div className="min-h-screen bg-white font-sans text-gray-800">
+      <nav className="w-full bg-white border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src={MorelosLogo} alt="Morelos" className="h-10 w-auto" />
+            <div>
+              <div className="text-lg font-semibold text-gray-900">Plan de Desarrollo Estatal</div>
+              <div className="text-sm text-gray-600">Asistente de Consulta</div>
             </div>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-2">
-            Plan de Desarrollo Estatal
-          </h1>
-          <h2 className="text-xl font-semibold text-blue-600 mb-2">
-            Asistente de Consulta
-          </h2>
-          <p className="text-sm text-slate-600 max-w-2xl mx-auto">
-            Consulte información sobre políticas públicas, programas gubernamentales, objetivos estratégicos y metas del plan de desarrollo
-          </p>
+          <div className="flex items-center gap-3">
+            <a href="/" className="text-sm text-gray-700 hover:underline">Inicio</a>
+            <a href="/tramites" className="text-sm text-gray-700 hover:underline">Trámites y servicios</a>
+            <a href="/noticias" className="text-sm text-gray-700 hover:underline">Noticias</a>
+            <a href="/contacto" className="text-sm text-gray-700 hover:underline">Contacto</a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-6 max-w-4xl">
+        <header className="text-center mb-4">
+          <h2 className="text-lg font-medium text-gray-700 mb-1">Consulta rápida sobre el Plan</h2>
+          <p className="text-sm text-gray-500 max-w-2xl mx-auto">Consulte información sobre políticas públicas, programas gubernamentales, objetivos estratégicos y metas del plan de desarrollo</p>
         </header>
 
-        <Card className="shadow-lg border border-slate-200 bg-white rounded-lg">
-          <CardHeader className="bg-slate-50 border-b border-slate-200">
-            <CardTitle className="flex items-center gap-2 text-lg text-slate-800">
-              <Bot className="h-5 w-5 text-blue-600" /> Consulta de Información
+        <Card className="shadow-lg border border-gray-200 bg-white rounded-lg">
+          <CardHeader className="bg-gray-50 border-b border-gray-200">
+            <CardTitle className="flex items-center gap-2 text-lg text-gray-800">
+              <Bot className="h-5 w-5 text-gray-600" /> Consulta de Información
             </CardTitle>
           </CardHeader>
 
@@ -156,25 +165,26 @@ function App() {
                   <div key={message.id} className={`flex gap-3 ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                     {message.type === 'bot' && (
                       <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                          <FileText className="h-4 w-4 text-white" />
+                        <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center overflow-hidden">
+                          <img src={ATDLogo} alt="ATD" className="w-7 h-7 object-cover" />
                         </div>
                       </div>
                     )}
-                    <div className={`max-w-[80%] rounded-lg px-4 py-3 ${
-                      message.type === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : message.isError
+                    <div className={`max-w-[80%] rounded-lg px-4 py-3 ${message.type === 'user'
+                      ? 'bg-gray-800 text-white'
+                      : message.isError
                         ? 'bg-red-50 border border-red-200 text-red-800'
-                        : 'bg-slate-50 border border-slate-200 text-slate-800'
-                    }`}>
-                      <ReactMarkdown className="text-sm leading-relaxed whitespace-pre-wrap">
-                        {message.content}
-                      </ReactMarkdown>
+                        : 'bg-gray-50 border border-gray-200 text-gray-800'
+                      }`}>
+                      <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                        <ReactMarkdown>
+                          {message.content}
+                        </ReactMarkdown>
+                      </div>
                       <div className="flex items-center justify-between mt-2 pt-2 border-t border-opacity-20 border-current">
                         <span className="text-xs opacity-70">{formatTime(message.timestamp)}</span>
                         {message.passagesUsed && (
-                          <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-800">
+                          <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-800">
                             {message.passagesUsed} referencias
                           </Badge>
                         )}
@@ -182,7 +192,7 @@ function App() {
                     </div>
                     {message.type === 'user' && (
                       <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
                           <User className="h-4 w-4 text-white" />
                         </div>
                       </div>
@@ -193,18 +203,18 @@ function App() {
                 {isLoading && (
                   <div className="flex gap-3 justify-start">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
                         <Loader2 className="h-4 w-4 text-white animate-spin" />
                       </div>
                     </div>
-                    <div className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
                       <div className="flex items-center gap-2">
                         <div className="flex gap-1">
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                         </div>
-                        <span className="text-sm text-slate-600">Consultando información...</span>
+                        <span className="text-sm text-gray-600">Consultando información...</span>
                       </div>
                     </div>
                   </div>
@@ -214,26 +224,38 @@ function App() {
             </ScrollArea>
           </CardContent>
 
-          <div className="border-t border-slate-200 p-4 bg-slate-50 flex gap-2">
+          <div className="border-t border-gray-200 p-4 bg-gray-50 flex gap-2">
             <Input
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Escriba su consulta sobre el plan de desarrollo..."
-              className="flex-1 border-slate-300 focus:border-blue-500 bg-white"
+              className="flex-1 border-gray-300 focus:border-gray-500 bg-white"
             />
             <Button
               onClick={sendMessage}
               disabled={isLoading || !inputValue.trim()}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6"
+              className="bg-gray-800 hover:bg-gray-900 text-white px-6"
             >
               {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
             </Button>
           </div>
         </Card>
 
-        <footer className="text-center mt-6 text-xs text-slate-500">
-          Sistema de Consulta del Plan de Desarrollo Estatal • Gobierno del Estado
+        <footer className="border-t mt-8 relative" role="contentinfo" aria-label="Pie de página">
+          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            <img
+              src={logo}
+              alt="Gobierno del Estado"
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <div className="mx-auto max-w-7xl px-4 py-4 text-center">
+            <p className="text-xs text-gray-500">
+              Sistema de Consulta del Plan de Desarrollo Estatal • Gobierno del Estado
+            </p>
+          </div>
         </footer>
       </div>
     </div>
